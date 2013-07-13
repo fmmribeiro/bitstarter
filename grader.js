@@ -29,7 +29,10 @@ var rest = require('restler');
 
 var HTMLFILE_DEFAULT = "index.html";
 var CHECKSFILE_DEFAULT = "checks.json";
+var CHECKURL_DEFAULT = "http://sleepy-anchorage-5225.herokuapp.com/";
 
+
+ 
 var assertFileExists = function(infile) {
     var instr = infile.toString();
     if(!fs.existsSync(instr)) {
@@ -108,7 +111,7 @@ if(require.main == module) {
     program
         .option('-c, --checks <check_file>', 'Path to checks.json', clone(assertFileExists), CHECKSFILE_DEFAULT)
         .option('-f, --file <html_file>', 'Path to index.html', clone(assertFileExists), HTMLFILE_DEFAULT)
-        .option('-u, --url <url_location>', 'url to anyurl', clone(assertURLExists), HTMLFILE_DEFAULT)
+        .option('-u, --url <url_location>', 'url to anyurl', clone(assertURLExists),CHECKURL_DEFAULT )
         .parse(process.argv);
     
 console.log("%s %s %s", program.checks , program.file, program.url);
